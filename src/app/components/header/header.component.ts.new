@@ -1,0 +1,196 @@
+import { Component, HostListener, OnInit, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+declare var $: any; // For jQuery
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, CommonModule],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
+})
+export class HeaderComponent implements OnInit {
+  isScrolled = false;
+  
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  
+  ngOnInit() {
+    // Check initial scroll position
+    this.checkScroll();
+    
+    // Initialize animations
+    this.initAnimation();
+    
+    // Initialize custom modal behavior
+    this.initModalBehavior();
+  }
+  
+  // Custom modal initialization with our own backdrop
+  initModalBehavior() {
+    setTimeout(() => {
+      // Make sure jQuery is available
+      if (typeof $ !== 'undefined') {
+        // Add document click handler to close modal when clicking outside
+        $(document).off('click.modalOutside').on('click.modalOutside', (e: any) => {
+          // Check if the modal is open and the click is outside both the modal content and toggle button
+          if ($('#myModal2').hasClass('show') && 
+              !$(e.target).closest('.modal-content').length && 
+              !$(e.target).closest('.side-menu-toggle').length &&
+              !$(e.target).closest('.modal-backdrop').length) {
+            // Close the modal when clicking anywhere outside
+            $('#myModal2').modal('hide');
+          }
+        });
+        
+        // Remove any previous modal initialization
+        try {
+          $('#myModal2').modal('dispose');
+        } catch(e) {
+          // Ignore errors if the modal wasn't initialized
+        }
+        
+        // Initialize modal with custom options
+        $('#myModal2').modal({
+          backdrop: false,
+          keyboard: true,
+          focus: false,
+          show: false
+        });
+        
+        // Create our custom backdrop element
+        if ($('#custom-modal-backdrop').length === 0) {
+          $('body').append('<div id="custom-modal-backdrop" class="custom-backdrop"></div>');
+        }
+        
+        // Ensure the side-menu-toggle button works properly
+        $('.side-menu-toggle').off('click').on('click', () => {
+          // Manually trigger the modal
+          $('#myModal2').modal('show');
+          return false; // Prevent default behavior
+        });
+        
+        // Handle modal show event
+        $('#myModal2').on('show.bs.modal', () => {
+          // Add class to body to prevent scrolling
+          $('body').addClass('side-modal-open');
+          
+          // Show custom backdrop with enhanced animation
+          $('#custom-modal-backdrop').show().addClass('show');
+          
+          // Make sure default backdrops are hidden
+          $('.modal-backdrop').css('display', 'none');
+          
+          // Fix modal positioning
+          $('.modal-dialog').css({
+            'marginRight': '0',
+            'transform': 'translateX(0)'
+          });
+        });
+        
+        // Handle custom backdrop click to close modal with improved user feedback
+        $('#custom-modal-backdrop').off('click').on('click', function(this: HTMLElement, e: any) {
+          // Visual feedback on click
+          const $this = $(this);
+          const offset = $this.offset() || { left: 0, top: 0 };
+          const clickX = e.pageX - offset.left;
+          const clickY = e.pageY - offset.top;
+          
+          // Create a ripple effect at click location
+          const ripple = $('<div class="backdrop-click-ripple"></div>');
+          ripple.css({
+            left: clickX + 'px',
+            top: clickY + 'px'
+          });
+          
+          $this.append(ripple);
+          
+          // Remove ripple after animation completes
+          setTimeout(() => {
+            ripple.remove();
+          }, 800);
+          
+          // Close the modal
+          $('#myModal2').modal('hide');
+        });
+        
+        // Handle close button events
+        $('.modal-header .close').off('click').on('click', () => {
+          $('#myModal2').modal('hide');
+          return false;
+        });
+        
+        // Clean up when modal is hidden
+        $('#myModal2').on('hidden.bs.modal', () => {
+          $('body').removeClass('side-modal-open');
+          $('#custom-modal-backdrop').removeClass('show');
+          setTimeout(() => {
+            $('#custom-modal-backdrop').hide();
+          }, 300);
+        });
+        
+        // Fix for social links inside modal
+        $('.sidebar-modal-widget .social-list a').on('click', function(this: HTMLAnchorElement, e: Event) {
+          // Prevent default only if href is "#"
+          const $this = $(this);
+          if ($this.attr('href') === '#') {
+            e.preventDefault();
+          }
+          
+          // Open in new tab for proper links
+          if ($this.attr('target') === '_blank' && $this.attr('href') !== '#') {
+            window.open($this.attr('href') || '', '_blank');
+          }
+        });
+      }
+    }, 500);
+  }
+  
+  @HostListener('window:scroll', [])
+  checkScroll() {
+    const scrollPosition = window.scrollY;
+    this.isScrolled = scrollPosition > 50;
+    
+    // No need to manually manipulate DOM classes as we're using [ngClass] binding
+  }
+  
+  @HostListener('window:resize', [])
+  onResize() {
+    // Ensure our custom modal backdrop is properly sized on window resize
+    if (typeof $ !== 'undefined') {
+      const customBackdrop = $('#custom-modal-backdrop');
+      if (customBackdrop.length && customBackdrop.is(':visible')) {
+        // Adjust width to be full screen minus modal width
+        customBackdrop.css({
+          'width': 'calc(100% - 380px)'
+        });
+      }
+    }
+  }
+  
+  // Initialize animations with delay for smoother page load
+  initAnimation() {
+    setTimeout(() => {
+      const navItems = this.el.nativeElement.querySelectorAll('.animated');
+      navItems.forEach((item: any, index: number) => {
+        this.renderer.setStyle(item, 'animation-delay', `${0.1 + (index * 0.1)}s`);
+      });
+    }, 100);
+  }
+  
+  // Method for search button click
+  toggleSearch() {
+    console.log('Search button clicked');
+    // Implement search functionality here
+    // For now just log to console
+  }
+  
+  // Method to toggle side menu
+  toggleSideMenu() {
+    console.log('Side menu toggled');
+    if (typeof $ !== 'undefined') {
+      $('#myModal2').modal('show');
+    }
+  }
+}

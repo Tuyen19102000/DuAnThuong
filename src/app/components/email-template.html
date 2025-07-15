@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thông tin liên hệ mới</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #4e73df, #224abe);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .header h2 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 30px;
+            border: none;
+        }
+        .field {
+            margin-bottom: 22px;
+        }
+        .label {
+            font-weight: 600;
+            color: #4e73df;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .value {
+            padding: 12px 15px;
+            background-color: #f8f9fc;
+            border: 1px solid #e3e6f0;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        .message-value {
+            padding: 15px;
+            background-color: #f8f9fc;
+            border: 1px solid #e3e6f0;
+            border-radius: 5px;
+            min-height: 120px;
+            white-space: pre-wrap;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            padding: 20px;
+            background-color: #f8f9fc;
+            border-radius: 0 0 8px 8px;
+            border-top: 1px solid #e3e6f0;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e3e6f0;
+            margin: 10px 0 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <!-- Logo placeholder - replace with your actual logo -->
+                <img src="https://your-website.com/logo.png" alt="DAThuong Logo" onerror="this.style.display='none'">
+            </div>
+            <h2>Thông Tin Liên Hệ Mới</h2>
+        </div>
+        
+        <div class="content">
+            <div class="field">
+                <div class="label">Họ tên</div>
+                <div class="value">{{name}}</div>
+            </div>
+            
+            <div class="field">
+                <div class="label">Email</div>
+                <div class="value">{{email}}</div>
+            </div>
+            
+            <div class="field">
+                <div class="label">Số điện thoại</div>
+                <div class="value">{{phone}}</div>
+            </div>
+            
+            <div class="field">
+                <div class="label">Tiêu đề</div>
+                <div class="value">{{subject}}</div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="field">
+                <div class="label">Nội dung</div>
+                <div class="message-value">{{message}}</div>
+            </div>
+            
+            <div class="field">
+                <div class="label">Ngày gửi</div>
+                <div class="value">{{date}}</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Email này được gửi tự động từ form liên hệ của website.</p>
+            <p>&copy; 2025 DAThuong. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

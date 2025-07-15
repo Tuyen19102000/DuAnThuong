@@ -1,0 +1,126 @@
+<header id="header" class="header-area" [ngClass]="{'header-sticky': isScrolled}">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <a routerLink="/" class="navbar-brand animated fadeInLeft">
+        <img alt="logo" src="/logoReway.png" class="logo">
+      </a>
+      
+      <button class="navbar-toggler side-menu-toggle" type="button" (click)="toggleSideMenu()"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item animated fadeInDown" style="animation-delay: 0.1s;">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+              <i class="fas fa-home nav-icon"></i> Home
+            </a>
+          </li>
+          <li class="nav-item animated fadeInDown" style="animation-delay: 0.2s;">
+            <a routerLink="/about-us" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-info-circle nav-icon"></i> About Us
+            </a>
+          </li>
+          <li class="nav-item animated fadeInDown" style="animation-delay: 0.3s;">
+            <a routerLink="/contact-us" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-envelope nav-icon"></i> Contact
+            </a>
+          </li>
+        </ul>
+        
+        <div class="header-actions animated fadeInRight" style="animation-delay: 0.4s;">
+          <a href="#" class="btn-menu-toggle d-block" (click)="toggleSideMenu($event)">
+            <div class="menu-icon-wrapper">
+              <span class="menu-icon-line"></span>
+              <span class="menu-icon-line"></span>
+              <span class="menu-icon-line"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Search Form -->
+  <div class="search-form-wrapper" [ngClass]="{'active': isSearchActive}">
+    <div class="container">
+      <form class="search-form">
+        <input type="text" placeholder="Search here..." class="form-control">
+        <button type="button" class="btn-close" (click)="toggleSearch($event)">
+          <i class="fas fa-times"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- Side Menu Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <img src="/logoReway.png" alt="logo" class="side-menu-logo">
+        </h5>
+        <button type="button" class="close-btn" (click)="toggleSideMenu($event)" aria-label="Close">
+          <span class="close-icon"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Welcome message -->
+        <div class="sidebar-welcome">
+          <h4>Welcome to</h4>
+          <h3>RIWAY MEDIA GROUP</h3>
+          <p class="mb-4">Professional digital media solutions for your business</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Contact Info</h3>
+          <ul class="contact-info-list">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="contact-text">
+                <span>Address</span>
+                <p>LK4-03 Dọc Bún 1, KĐT Văn Khê, Phường Hà Đông, Hà Nội</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <div class="contact-text">
+                <span>Email</span>
+                <p>contacts&#64;riwaymedia.com</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <div class="contact-text">
+                <span>Phone</span>
+                <p>+84 967 825 178</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Connect With Us</h3>
+          <ul class="social-list">
+            <li><a href="https://www.facebook.com/profile.php?id=61576342929995" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          </ul>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Quick Links</h3>
+          <ul class="quick-links">
+            <li><a routerLink="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a routerLink="/about-us"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a routerLink="/contact-us"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
