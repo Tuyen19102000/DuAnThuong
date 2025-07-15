@@ -1,0 +1,183 @@
+<!-- Animated Banner Section -->
+<section class="page-title-banner animate__animated animate__fadeIn">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="animate__animated animate__slideInDown">CONTACT US</h2>
+      </div>
+    </div>
+  </div>
+  <div class="shape1"><img src="/shape.png" width="30px" height="30px" alt="shape" class="floating"></div>
+  <div class="shape2"><img src="/shape.png" alt="shape" width="30px" height="30px" class="floating-slow"></div>
+  <div class="shape3"><img src="/shape.png" alt="shape" width="30px" height="30px" class="floating-medium"></div>
+  <div class="shape6"><img src="/shape.png" alt="shape" width="30px" height="30px" class="floating-vertical"></div>
+
+</section>
+
+<!-- Contact Info Cards Section -->
+<section class="contact-info-area pt-50 pb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="contact-info-box animate__animated animate__fadeInUp">
+          <div class="icon pulse-effect"><i class="icofont-email"></i></div>
+          <h3>Mail Here</h3>
+          <p><a href="mailto:info&#64;hnmediagroup.com">info&#64;hnmediagroup.com</a></p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="contact-info-box animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="icon pulse-effect"><i class="icofont-google-map"></i></div>
+          <h3>Visit Here</h3>
+          <p>123 Media Street, Hanoi, Vietnam</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+        <div class="contact-info-box animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="icon pulse-effect"><i class="icofont-phone"></i></div>
+          <h3>Call Here</h3>
+          <p><a href="tel:+84123456789">+84 123 456 789</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-area ptb-100 pt-0 features-area saas-features">
+  <div class="container">
+    <div class="section-title animate__animated animate__fadeIn ">
+      <h2>Get In Touch With Us</h2>
+      <div class="bar"></div>
+      <p>Anything On your Mind. We'll Be Glad To Assist You!</p>
+    </div>
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col-lg-6 col-md-12">
+        <img src="/riway-home.png" alt="image" class="animate__animated animate__fadeInLeft fixImg">
+      </div>
+      <div class="col-lg-6 col-md-12 animate__animated animate__fadeInRight pb-50">
+        <div class="contact-form">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <input type="text" formControlName="name" class="form-control" placeholder="Name"
+                    [ngClass]="{'is-invalid': submitted && f['name'].errors}">
+                  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['name'].errors['required']">Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <input type="email" formControlName="email" class="form-control" placeholder="Email"
+                    [ngClass]="{'is-invalid': submitted && f['email'].errors}">
+                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                    <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" formControlName="phone" class="form-control" placeholder="Phone">
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" formControlName="subject" class="form-control" placeholder="Subject"
+                    [ngClass]="{'is-invalid': submitted && f['subject'].errors}">
+                  <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+                    <div *ngIf="f['subject'].errors['required']">Subject is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <textarea formControlName="message" class="form-control" placeholder="Your Message" rows="5"
+                    [ngClass]="{'is-invalid': submitted && f['message'].errors}"></textarea>
+                  <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+                    <div *ngIf="f['message'].errors['required']">Message is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+                  <span *ngIf="!isLoading">Send Message <i class="icofont-paper-plane"></i></span>
+                  <span *ngIf="isLoading">Sending... <i class="icofont-spinner icofont-spin"></i></span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="alert alert-success mt-3 animate__animated animate__fadeIn" *ngIf="successMessage">
+            <i class="icofont-check-circled"></i> {{ successMessage }}
+          </div>
+
+          <div class="alert alert-danger mt-3 animate__animated animate__fadeIn" *ngIf="errorMessage">
+            <i class="icofont-warning-alt"></i> {{ errorMessage }}
+          </div>
+
+          <div class="mt-3" *ngIf="isLoading">
+            <p class="text-center text-primary">
+              <i class="icofont-spinner icofont-spin"></i> Đang gửi thông tin liên hệ của bạn đến
+              contacts&#64;riwaymedia.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <app-success-modal [show]="showSuccessModal" [name]="submittedFormData.name" [email]="submittedFormData.email"
+    [subject]="submittedFormData.subject" (closed)="handleModalClosed()" (newMessage)="handleNewMessage()">
+  </app-success-modal>
+</section>
+
+<!-- Social Media Follow Section -->
+<section class="social-connect-area pt-50 bg-light">
+  <div class="container">
+    <div class="section-title  animate__animated animate__fadeIn">
+      <h2>Connect With Us</h2>
+      <div class="bar"></div>
+      <p>Follow our social media channels to stay updated with our latest news and events</p>
+    </div>
+
+    <div class="row justify-content-center animate__animated animate__fadeInUp pb-50">
+      <div class="social-links-extended">
+        <a href="https://www.facebook.com/profile.php?id=61576342929995" target="_blank" class="facebook hover-effect">
+          <i class="icofont-facebook"></i>
+          <span>Facebook</span>
+        </a>
+        <!-- <a href="#" class="twitter hover-effect">
+          <i class="icofont-twitter"></i>
+          <span>Twitter</span>
+        </a>
+        <a href="#" class="instagram hover-effect">
+          <i class="icofont-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="youtube hover-effect">
+          <i class="icofont-youtube"></i>
+          <span>YouTube</span>
+        </a>
+        <a href="#" class="linkedin hover-effect">
+          <i class="icofont-linkedin"></i>
+          <span>LinkedIn</span>
+        </a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated background elements -->
+  <div class="circle-shape1"></div>
+  <div class="circle-shape2"></div>
+  <div class="shape-dots1"></div>
+  <div class="shape-dots2"></div>
+</section>
