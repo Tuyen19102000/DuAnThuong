@@ -44,13 +44,11 @@ import { CommonModule } from '@angular/common';
         </div>
         
         <!-- Social media links -->
-        <div class="social-links">
-          <p class="connect-text">Kết nối với chúng tôi</p>
-          <div class="social-icons">
-            <a href="#" class="social-icon"><i class="icofont-facebook"></i></a>
-            <a href="#" class="social-icon"><i class="icofont-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="icofont-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="icofont-linkedin"></i></a>
+        <div class="social-links" style="display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+          <p style="margin-bottom: 0;">Kết nối với chúng tôi</p>
+          <div class="social-icons" style="margin-left: 20px;">
+            <a href="https://www.facebook.com/profile.php?id=61576342929995" class="social-icon"><i class="icofont-facebook"></i></a>
+
           </div>
         </div>
       </div>
