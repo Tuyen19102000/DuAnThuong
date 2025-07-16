@@ -21,12 +21,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Animation and jQuery code
-    this.initWow();
-    // this.initCounters();
-    this.initRotateMe();
-    this.initNewsletterForm();
-    this.initScrollAnimation();
+    // Check if we're running in the browser before manipulating DOM
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Animation and jQuery code
+      setTimeout(() => {
+        this.initWow();
+        // this.initCounters();
+        this.initRotateMe();
+        this.initNewsletterForm();
+        this.initScrollAnimation();
+      });
+    }
   }
 
   // Initialize WOW.js animations

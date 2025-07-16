@@ -8,6 +8,7 @@ declare var $: any;
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, NgIf, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -22,11 +23,16 @@ export class AppComponent implements OnInit {
       this.loading = false;
     }, 1000);
     
-    // Initialize Bootstrap components that require JavaScript
-    $(document).ready(() => {
-      $('[data-toggle="collapse"]').collapse();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('[data-toggle="popover"]').popover();
-    });
+    // Check if we're running in the browser before using jQuery/DOM
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Initialize Bootstrap components that require JavaScript
+      setTimeout(() => {
+        if ($) {
+          $('[data-toggle="collapse"]').collapse();
+          $('[data-toggle="tooltip"]').tooltip();
+          $('[data-toggle="popover"]').popover();
+        }
+      });
+    }
   }
 }

@@ -18,21 +18,31 @@ export class HeaderComponent implements OnInit {
   
   constructor(private renderer: Renderer2, private el: ElementRef) {}
   ngOnInit() {
-    // Check initial scroll position
-    this.checkScroll();
-    
-    // Initialize animations
-    this.initAnimation();
-    
-    // Initialize custom modal behavior
-    this.initModalBehavior();
+    // Only execute browser-dependent code if in browser environment
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Check initial scroll position
+      this.checkScroll();
+      
+      // Initialize animations
+      this.initAnimation();
+      
+      // Initialize custom modal behavior with a slight delay to ensure DOM is ready
+      setTimeout(() => {
+        this.initModalBehavior();
+      });
+    }
   }
   
   // Custom modal initialization with our own backdrop
   initModalBehavior() {
+    // Safety check for browser environment
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+    
     setTimeout(() => {
-      // Make sure jQuery is available
-      if (typeof $ !== 'undefined') {        // Add document click handler to close modal when clicking outside
+      // Make sure jQuery is available and elements exist
+      if (typeof $ !== 'undefined' && $('#myModal2').length) {        // Add document click handler to close modal when clicking outside
         $(document).off('click.modalOutside').on('click.modalOutside', (e: any) => {
           // Check if the modal is open and the click is outside both the modal content and toggle button
           if ($('#myModal2').hasClass('show') && 

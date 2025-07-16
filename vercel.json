@@ -20,6 +20,10 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/_redirects",
+      "dest": "/_redirects"
+    },
+    {
       "src": "/(.*)\\.(.+)",
       "dest": "/$1.$2"
     },
