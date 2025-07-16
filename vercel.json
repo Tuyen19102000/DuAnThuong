@@ -1,16 +1,8 @@
 {
   "version": 2,
   "framework": "angular",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/da-thuong/browser",
-        "buildCommand": "npm run vercel-build"
-      }
-    }
-  ],
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist/da-thuong/browser",
   "routes": [
     {
       "handle": "filesystem"
