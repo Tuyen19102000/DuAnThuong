@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
       <div class="success-modal-content animate__animated animate__fadeInUp">
         <!-- Logo section -->
         <div class="company-logo">
-          <img src="assets/img/logo.png" alt="Company Logo" class="logo-image">
+          <img src="/logoReway.png" alt="Company Logo" class="logo-image">
         </div>
         
         <!-- Success animation -->
