@@ -20,16 +20,17 @@
       "dest": "/assets/$1"
     },
     {
-      "src": "/_redirects",
-      "dest": "/_redirects"
-    },
-    {
       "src": "/(.*)\\.(.+)",
       "dest": "/$1.$2"
     },
     {
+      "src": "/(api|_next|__next)/(.*)",
+      "dest": "/$1/$2"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "status": 200
     }
   ]
 }
