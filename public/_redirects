@@ -1,3 +1,4 @@
 /* /index.html 200
 /about-us /index.html 200
 /contact-us /index.html 200
+/assets/* /assets/:splat 200
