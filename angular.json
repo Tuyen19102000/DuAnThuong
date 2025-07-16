@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/da-thuong/browser",
+            "outputPath": "dist/da-thuong",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -98,17 +98,10 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "output": "/"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
+                "input": "public"
               }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -119,5 +112,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2a500ea9-eb55-4318-95bb-ec3095881893"
   }
 }
