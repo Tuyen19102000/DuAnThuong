@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production && npx copyfiles -u 1 \"public/**/*\" dist/da-thuong/browser",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "vercel-build": "ng build --configuration production --output-hashing=all --base-href=/ && npx copyfiles -u 1 \"public/**/*\" dist/da-thuong/browser && node vercel-build.js"
+    "vercel-build": "ng build"
   },
   "private": true,
   "dependencies": {
