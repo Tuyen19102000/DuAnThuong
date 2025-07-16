@@ -7,7 +7,7 @@
     "build": "ng build --configuration production && npx copyfiles -u 1 \"public/**/*\" dist/da-thuong/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "vercel-build": "ng build --configuration production --output-hashing=all && npx copyfiles -u 1 \"public/**/*\" dist/da-thuong/browser"
+    "vercel-build": "ng build --configuration production --output-hashing=all --base-href=/ && npx copyfiles -u 1 \"public/**/*\" dist/da-thuong/browser && node vercel-build.js"
   },
   "private": true,
   "dependencies": {
