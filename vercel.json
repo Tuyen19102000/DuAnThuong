@@ -1,11 +1,13 @@
 {
   "version": 2,
+  "framework": "angular",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/da-thuong/browser"
+        "distDir": "dist/da-thuong/browser",
+        "buildCommand": "npm run build"
       }
     }
   ],
