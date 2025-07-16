@@ -7,7 +7,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist/da-thuong/browser",
-        "buildCommand": "npm run build"
+        "buildCommand": "npm run vercel-build"
       }
     }
   ],
