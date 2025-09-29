@@ -23,7 +23,7 @@
 1. Trong dashboard EmailJS, nhấn vào "Email Templates" ở menu bên trái
 2. Nhấn nút "Create New Template"
 3. Đặt tên cho template (ví dụ: "Contact Form Template")
-4. Trong phần "To Email", nhập `contacts@riwaymedia.com`
+4. Trong phần "To Email", nhập `contact@riwaymedia.com`
 5. Thiết kế template với nội dung:
 
 ```
@@ -72,7 +72,7 @@ Sau khi cập nhật các giá trị, bạn nên kiểm tra lại để đảm b
 1. Khởi động lại ứng dụng Angular: `ng serve`
 2. Thử gửi một form liên hệ thử nghiệm
 3. Kiểm tra console để xem có lỗi không
-4. Kiểm tra email của contacts@riwaymedia.com để xem email đã được gửi chưa
+4. Kiểm tra email của contact@riwaymedia.com để xem email đã được gửi chưa
 
 ## Giải quyết vấn đề
 

@@ -6,7 +6,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ### Contact Form Email Functionality
 
-The contact form is integrated with EmailJS to send form submissions directly to contacts@riwaymedia.com. To set up the email functionality:
+The contact form is integrated with EmailJS to send form submissions directly to contact@riwaymedia.com. To set up the email functionality:
 
 1. Register for an [EmailJS account](https://www.emailjs.com/)
 2. Set up an email service and template

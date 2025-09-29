@@ -285,7 +285,7 @@ export class SuccessModalComponent {
   @Output() newMessage = new EventEmitter<void>();
   
   // Default recipient email from the email service
-  recipientEmail = 'contacts@riwaymedia.com';
+  recipientEmail = 'contact@riwaymedia.com';
   
   // Timestamp for when the message was sent
   timestamp = new Date();

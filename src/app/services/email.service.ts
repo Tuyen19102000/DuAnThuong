@@ -10,7 +10,7 @@ export class EmailService {
   private readonly SERVICE_ID = 'service_gtydh3f'; // Thay thế bằng Service ID thực của bạn từ EmailJS
   private readonly TEMPLATE_ID = 'template_m9xof1u'; // Thay thế bằng Template ID thực của bạn từ EmailJS
   private readonly PUBLIC_KEY = 'D3tJOiZn7CJ78zagg'; // Thay thế bằng Public Key thực của bạn từ EmailJS
-  private readonly RECIPIENT_EMAIL = 'contacts@riwaymedia.com';
+  private readonly RECIPIENT_EMAIL = 'contact@riwaymedia.com';
 
   constructor() {
     // Khởi tạo EmailJS với public key

@@ -17,7 +17,7 @@ Bạn cần đảm bảo rằng template của bạn trong EmailJS (template_m9x
 
 ### 3. Cấu hình các trường Email
 
-1. **To Email**: Nhập `contacts@riwaymedia.com`
+1. **To Email**: Nhập `contact@riwaymedia.com`
 2. **From Name**: Nhập `{{name}}` để hiển thị tên người gửi
 3. **From Email**: Nhập `{{email}}` để hiển thị email người gửi
 4. **Subject**: Nhập `Thông tin liên hệ mới: {{subject}}`

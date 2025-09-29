@@ -23,7 +23,7 @@
 
 1. Trong dashboard EmailJS, chọn "Email Templates" → "Create New Template".
 2. Đặt tên cho template (VD: "Contact Form Template").
-3. Trong phần "To Email" nhập email người nhận: `contacts@riwaymedia.com`
+3. Trong phần "To Email" nhập email người nhận: `contact@riwaymedia.com`
 4. Trong phần "From Email", chọn một trong hai:
    - `{{email}}` - để hiển thị email của người gửi (nếu dịch vụ email cho phép)
    - Hoặc một địa chỉ cố định từ tài khoản email đã xác thực của bạn
@@ -87,4 +87,4 @@ Sau khi cấu hình, bạn có thể kiểm tra dịch vụ trực tiếp trong 
 1. Vào "Email Templates"
 2. Chọn template của bạn
 3. Nhấp vào nút "Test" để gửi email thử nghiệm
-4. Kiểm tra hộp thư đến của contacts@riwaymedia.com để xác nhận
+4. Kiểm tra hộp thư đến của contact@riwaymedia.com để xác nhận
