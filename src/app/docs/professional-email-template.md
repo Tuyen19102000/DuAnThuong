@@ -234,7 +234,7 @@ Dưới đây là mẫu HTML để tạo email chuyên nghiệp, đẹp mắt ch
             
             <div class="contact-info">
                 <div class="contact-item">123 Media Street, Hanoi, Vietnam</div>
-                <div class="contact-item">+84 123 456 789</div>
+                <div class="contact-item">+84 967 825 178</div>
             </div>
             
             <div class="social-links">
