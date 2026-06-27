@@ -1,0 +1,85 @@
+<section class="content-hero">
+  <div class="container content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">Content Direction</p>
+      <h1>Content lines that partners can read, package and scale.</h1>
+      <p>
+        RIWAY develops repeatable content directions across music, AI audio, regional sound and cinematic media so a
+        network can quickly see where collaboration can start.
+      </p>
+      <div class="hero-highlight-row" aria-label="Content highlights">
+        <span *ngFor="let item of heroHighlights">{{ item }}</span>
+      </div>
+    </div>
+
+    <div class="content-hero-panel" aria-label="Content slate overview">
+      <div class="panel-heading">
+        <span>Slate map</span>
+        <strong>4 directions, one partner-ready package</strong>
+      </div>
+
+      <div class="hero-slate-grid">
+        <article *ngFor="let item of slates">
+          <i [class]="item.icon"></i>
+          <div>
+            <strong>{{ item.title }}</strong>
+            <span>{{ item.signal }}</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="release-flow" aria-label="Release package flow">
+        <span *ngFor="let item of releaseFlow">{{ item }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slate-section">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Content Slate</p>
+      <h2>Four directions, each designed for repeatable production.</h2>
+    </div>
+
+    <div class="slate-grid">
+      <article *ngFor="let item of slates">
+        <span>{{ item.title }}</span>
+        <p>{{ item.description }}</p>
+        <div class="format-list">
+          <em *ngFor="let format of item.formats">{{ format }}</em>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="package-section">
+  <div class="container package-grid">
+    <div>
+      <p class="eyebrow">Partner Package</p>
+      <h2>What a collaboration can include.</h2>
+      <p>
+        A professional partner does not only need a creative idea. They need the content to be understandable, packaged,
+        measurable and ready to move through a network conversation.
+      </p>
+    </div>
+
+    <div class="deliverable-list">
+      <div *ngFor="let item of deliverables; let index = index">
+        <strong>0{{ index + 1 }}</strong>
+        <span>{{ item }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-cta">
+  <div class="container cta-panel">
+    <div>
+      <p class="eyebrow">Next Step</p>
+      <h2>Want to explore one of these content directions?</h2>
+    </div>
+    <a [routerLink]="['/contact-us']">Contact RIWAY</a>
+  </div>
+</section>
