@@ -1,0 +1,113 @@
+<section class="capabilities-hero">
+  <div class="hero-media" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Capabilities</p>
+      <h1>Creative production, packaging and growth operation for network partners.</h1>
+      <p>
+        RIWAY connects music creativity with channel operation, AI-assisted workflow and partner-facing presentation so
+        a content idea can move faster from concept to collaboration.
+      </p>
+      <div class="hero-actions">
+        <a [routerLink]="['/contact-us']">Start A Partnership</a>
+        <a [routerLink]="['/content']" class="secondary">View Content Slate</a>
+      </div>
+    </div>
+
+    <div class="signal-panel" aria-label="Capability overview">
+      <div class="panel-top">
+        <span>Operating focus</span>
+        <strong>Music, AI audio, regional sound and cinematic assets.</strong>
+      </div>
+      <div class="signal-map" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="panel-metrics">
+        <div>
+          <strong>100M+</strong>
+          <span>Views</span>
+        </div>
+        <div>
+          <strong>100+</strong>
+          <span>Channels</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillar-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">What We Build</p>
+      <h2>Capabilities shaped for real media operation.</h2>
+      <p>
+        The goal is not to show isolated creative services. RIWAY packages strategy, production and distribution logic
+        into a clearer collaboration path for global networks.
+      </p>
+    </div>
+
+    <div class="pillar-grid">
+      <article *ngFor="let item of pillars">
+        <div class="pillar-icon"><i [class]="item.icon"></i></div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <div class="point-list">
+          <span *ngFor="let point of item.points">{{ point }}</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="workflow-section">
+  <div class="container workflow-grid">
+    <div class="section-heading compact">
+      <p class="eyebrow">Workflow</p>
+      <h2>From partner brief to measurable release cycle.</h2>
+      <p>
+        A smoother working model helps both sides understand the content, review assets and decide the next step faster.
+      </p>
+    </div>
+
+    <div class="workflow-list">
+      <article *ngFor="let item of workflow">
+        <span>{{ item.step }}</span>
+        <div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="readiness-section">
+  <div class="container readiness-grid">
+    <div>
+      <p class="eyebrow">Network-Ready Package</p>
+      <h2>Clear materials for labels, MCNs, platforms and distributors.</h2>
+      <p>
+        When a partner reviews RIWAY, they should see more than a beautiful page. They should understand what can be
+        shipped, measured and discussed in a business conversation.
+      </p>
+    </div>
+
+    <div class="readiness-list">
+      <article *ngFor="let item of readiness">
+        <span>{{ item.label }}</span>
+        <p>{{ item.value }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities-cta">
+  <div class="container cta-panel">
+    <div>
+      <p class="eyebrow">Next Conversation</p>
+      <h2>Bring RIWAY a market, catalog or network opportunity.</h2>
+    </div>
+    <a [routerLink]="['/contact-us']">Contact RIWAY</a>
+  </div>
+</section>

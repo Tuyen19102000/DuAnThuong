@@ -1,7 +1,6 @@
-// filepath: c:\Users\tuyen.nguyen7\Desktop\DAThuong\src\app\pages\contact\contact.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { SuccessModalComponent } from '../../components/success-modal/success-modal.component';
 
@@ -13,16 +12,28 @@ import { SuccessModalComponent } from '../../components/success-modal/success-mo
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent implements OnInit {
+  readonly contactIntents = [
+    'Network or MCN partnership',
+    'Music catalog collaboration',
+    'AI audio workflow',
+    'Film or animation content slate'
+  ];
+
+  readonly responseSteps = [
+    { step: '01', label: 'Share market and content direction' },
+    { step: '02', label: 'RIWAY reviews fit and package needs' },
+    { step: '03', label: 'Next call with clear collaboration model' }
+  ];
+
   contactForm!: FormGroup;
   submitted = false;
   successMessage = '';
   errorMessage = '';
   isLoading = false;
   showSuccessModal = false;
-  formInitialValues: any = {};
-  
-  // Store form data that was submitted successfully
-  submittedFormData: any = {
+  formInitialValues: Record<string, string> = {};
+
+  submittedFormData = {
     name: '',
     email: '',
     subject: '',
@@ -31,18 +42,15 @@ export class ContactComponent implements OnInit {
   };
 
   constructor(
-    private formBuilder: FormBuilder,
-    private emailService: EmailService
+    private readonly formBuilder: FormBuilder,
+    private readonly emailService: EmailService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initForm();
   }
-  
-  /**
-   * Khởi tạo form liên hệ
-   */
-  initForm() {
+
+  initForm(): void {
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -50,42 +58,30 @@ export class ContactComponent implements OnInit {
       subject: ['', Validators.required],
       message: ['', Validators.required]
     });
-    
-    // Lưu giá trị ban đầu để reset form về trạng thái ban đầu
+
     this.formInitialValues = this.contactForm.value;
   }
-  
-  /**
-   * Reset form về trạng thái ban đầu
-   */
-  resetForm() {
+
+  resetForm(): void {
     this.contactForm.reset(this.formInitialValues);
     this.submitted = false;
-    
-    // Xóa các trạng thái validation
+
     Object.keys(this.contactForm.controls).forEach(key => {
       const control = this.contactForm.get(key);
       control?.markAsUntouched();
       control?.markAsPristine();
     });
   }
-  
-  /**
-   * Xử lý khi đóng modal thành công
-   */
-  handleModalClosed() {
+
+  handleModalClosed(): void {
     this.showSuccessModal = false;
   }
-  
-  /**
-   * Xử lý khi người dùng muốn gửi tin nhắn mới
-   */
-  handleNewMessage() {
+
+  handleNewMessage(): void {
     this.showSuccessModal = false;
     this.resetForm();
-    
-    // Cuộn đến form liên hệ
-    const formElement = document.querySelector('.contact-form');
+
+    const formElement = document.querySelector('.contact-form-panel');
     if (formElement) {
       window.scrollTo({
         top: formElement.getBoundingClientRect().top + window.pageYOffset - 120,
@@ -94,32 +90,30 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.contactForm.controls; }
+  get f() {
+    return this.contactForm.controls;
+  }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     this.successMessage = '';
     this.errorMessage = '';
     this.isLoading = true;
 
-    // stop here if form is invalid
     if (this.contactForm.invalid) {
       this.isLoading = false;
       return;
     }
 
-    // Lưu các giá trị của form để gửi email
     const formData = {
       name: this.contactForm.value.name,
       email: this.contactForm.value.email,
-      phone: this.contactForm.value.phone || 'Không cung cấp',
+      phone: this.contactForm.value.phone || 'Not provided',
       subject: this.contactForm.value.subject,
       message: this.contactForm.value.message,
-      date: new Date().toLocaleString('vi-VN')
+      date: new Date().toLocaleString('en-US')
     };
-    
-    // Lưu thông tin form đã gửi để hiển thị trong modal
+
     this.submittedFormData = {
       name: formData.name,
       email: formData.email,
@@ -129,24 +123,17 @@ export class ContactComponent implements OnInit {
     };
 
     this.emailService.sendEmail(formData).subscribe({
-      next: (response) => {
-        console.log('Email sent successfully:', response);
+      next: () => {
         this.isLoading = false;
-        this.successMessage = 'Tin nhắn của bạn đã được gửi thành công!';
-        
-        // Reset form và trạng thái
+        this.successMessage = 'Your message has been sent successfully.';
         this.resetForm();
-        
-        // Hiển thị modal thành công
         this.showSuccessModal = true;
-        
-        // Tự động ẩn thông báo thành công sau một khoảng thời gian
+
         setTimeout(() => {
           this.successMessage = '';
         }, 5000);
-        
-        // Cuộn lên đầu form
-        const formElement = document.querySelector('.contact-form');
+
+        const formElement = document.querySelector('.contact-form-panel');
         if (formElement) {
           window.scrollTo({
             top: formElement.getBoundingClientRect().top + window.pageYOffset - 120,
@@ -156,19 +143,17 @@ export class ContactComponent implements OnInit {
       },
       error: (error) => {
         this.isLoading = false;
-        console.error('Email sending error:', error);
-        
-        // Hiển thị thông báo lỗi chi tiết
+
         if (error.message) {
           this.errorMessage = error.message;
         } else if (error.status === 400) {
-          this.errorMessage = 'Lỗi cấu hình: Vui lòng kiểm tra cài đặt EmailJS trong file email.service.ts';
+          this.errorMessage = 'Configuration error: please check the EmailJS settings.';
         } else if (error.status === 403) {
-          this.errorMessage = 'Lỗi xác thực: PUBLIC_KEY không đúng hoặc tài khoản EmailJS của bạn có vấn đề';
+          this.errorMessage = 'Authentication error: please check the EmailJS public key.';
         } else if (error.status === 429) {
-          this.errorMessage = 'Đã vượt quá giới hạn gửi email. Vui lòng thử lại sau hoặc nâng cấp tài khoản EmailJS';
+          this.errorMessage = 'Email sending limit reached. Please try again later.';
         } else {
-          this.errorMessage = 'Đã xảy ra lỗi khi gửi tin nhắn. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email.';
+          this.errorMessage = 'Something went wrong while sending your message. Please try again later.';
         }
       }
     });
